@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Story — Case Study — Lo Slabach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2B29;--ink-soft:#46524E;--paper:#E6E1D3;--card:#EFEBE0;
+    --teal:#1C5E63;--flag:#B8463A;--line:#C6BDA8;--muted:#6E6A5C;
+    --display:"Fraunces",Georgia,serif;
+    --body:"Hanken Grotesk",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .col{max-width:720px;margin:0 auto;padding:0 28px}
+
+  /* top bar */
+  .topbar{border-bottom:1px solid var(--line)}
+  .topbar .col{display:flex;justify-content:space-between;align-items:center;padding-top:20px;padding-bottom:20px}
+  .topbar a{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-decoration:none;color:var(--ink)}
+  .topbar a.live{border-bottom:1px solid var(--teal);padding-bottom:2px}
+  .topbar a:hover{color:var(--teal)}
+
+  /* hero */
+  .hero{padding:64px 0 40px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+  .hero h1{font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:18px 0 20px}
+  .hero .desc{font-size:1.2rem;color:var(--ink-soft);max-width:38ch}
+  .chips{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:5px 10px}
+  .chip.pw{color:var(--flag);border:1px dashed var(--flag);text-transform:none;letter-spacing:.04em;background:rgba(184,70,58,.06);animation:keypulse 2.6s ease-in-out infinite}
+  .chip.pw b{font-weight:500;letter-spacing:.1em}
+  @keyframes keypulse{0%,100%{background:rgba(184,70,58,.05)}50%{background:rgba(184,70,58,.18)}}
+
+  /* section */
+  section{padding:34px 0}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .kicker .n{color:var(--flag)}
+  .kicker .rule{flex:1;height:1px;background:var(--line)}
+  h2{font-family:var(--display);font-weight:500;font-size:1.7rem;letter-spacing:-.01em;margin-bottom:18px;line-height:1.12}
+  p{margin-bottom:18px;max-width:64ch}
+  p .em{font-style:italic}
+  strong{font-weight:600}
+
+  /* pull quote */
+  .pull{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.4rem,3.6vw,1.9rem);line-height:1.25;letter-spacing:-.01em;color:var(--ink);border-left:2px solid var(--flag);padding:6px 0 6px 22px;margin:30px 0;max-width:26ch}
+  .pull.teal{border-color:var(--teal)}
+
+  /* principles */
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;margin-top:8px}
+  .principle{border-top:1px solid var(--ink);padding-top:14px}
+  .principle .pn{font-family:var(--mono);font-size:11px;color:var(--flag);letter-spacing:.08em}
+  .principle h3{font-family:var(--display);font-weight:500;font-size:1.15rem;line-height:1.18;margin:8px 0 8px}
+  .principle p{font-size:.95rem;color:var(--ink-soft);margin:0}
+
+  /* figures */
+  figure{margin:28px 0}
+  .slot{border:1px dashed var(--muted);border-radius:3px;background:var(--card);
+    aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px}
+  .slot .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--flag)}
+  .slot .hint{font-family:var(--mono);font-size:12px;color:var(--muted);max-width:38ch}
+  .vidwrap{display:flex;justify-content:center;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px}
+  figure video{display:block;max-height:640px;width:auto;max-width:100%;border-radius:12px;border:1px solid var(--ink-soft);background:#000}
+  figure img{width:100%;border-radius:3px;display:block}
+  figcaption{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:12px;line-height:1.5}
+  figcaption b{color:var(--ink);font-weight:500}
+
+  /* journey beats */
+  .beat{border-top:1px solid var(--line);padding:18px 0}
+  .beat h3{font-family:var(--display);font-weight:500;font-size:1.18rem;margin-bottom:6px}
+  .beat .why{color:var(--ink-soft);font-size:.98rem;margin:0}
+  .beat .why b{color:var(--ink);font-weight:600}
+
+  /* tradeoffs */
+  .tradeoffs{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:30px 30px 12px;margin-top:10px}
+  .trade{border-top:1px solid var(--line);padding:18px 0}
+  .trade:first-of-type{border-top:none;padding-top:4px}
+  .trade h3{font-family:var(--display);font-weight:500;font-size:1.15rem;margin-bottom:6px;display:flex;gap:10px;align-items:baseline}
+  .trade h3 .x{color:var(--flag);font-family:var(--mono);font-size:.9rem}
+  .trade p{color:var(--ink-soft);font-size:.98rem;margin:0}
+
+  /* next list */
+  .next li{list-style:none;padding:12px 0;border-top:1px solid var(--line);color:var(--ink-soft)}
+  .next li:first-child{border-top:none}
+  .next li b{color:var(--ink);font-weight:600;font-family:var(--display)}
+
+  /* closing */
+  .closing{padding:48px 0 20px}
+  .closing .line{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:-.01em;max-width:20ch}
+  footer{border-top:1px solid var(--line);padding:30px 0 46px}
+  footer .col{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a,footer span{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em;text-decoration:none}
+  footer a:hover{color:var(--teal)}
+
+  a:focus-visible{outline:2px solid var(--flag);outline-offset:3px}
+  @media (max-width:640px){
+    .principles{grid-template-columns:1fr}
+    .hero{padding:48px 0 32px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="col">
+    <a href="./index.html">← Lo Slabach</a>
+    <a class="live" href="https://find-your-story.replit.app/" target="_blank" rel="noopener">Live demo →</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="col">
+    <p class="eyebrow">Case study · Find Your Story</p>
+    <h1>Find Your Story</h1>
+    <p class="desc">A guided self-interview that helps people understand themselves before they hand their story to AI.</p>
+    <div class="chips">
+      <span class="chip">Six weeks</span>
+      <span class="chip">Solo build</span>
+      <span class="chip">PDF → web app</span>
+      <span class="chip">Tested with friends</span>
+      <span class="chip pw">Demo password: <b>lodestar</b></span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="col">
+    <div class="kicker"><span class="n">01</span> The problem <span class="rule"></span></div>
+    <h2>I built this because I couldn't see my own ADHD.</h2>
+    <p>I had an epiphany that I wanted to understand myself as someone with ADHD, and I still couldn't quite see it in my own life. Then it clicked. Now that AI exists, I could have an expert read my story back to me through their lens and tell me whether the pattern had been there the whole time. All I had to do was hand over the story.</p>
+    <p>The first time I did it, I cried. Then I walked a few friends through the same questions, and it happened to them too. That reaction is the reason this became a product instead of a private exercise. I love hearing people's stories, and hearing myself as the hero of one turned out to be the whole thing.</p>
+  </div>
+</section>
+
+<section>
+  <div class="col">
+    <div class="kicker"><span class="n">02</span> The hypothesis <span class="rule"></span></div>
+    <p>Most people give AI fragments of themselves and get generic insight back. I believed that if someone was guided through their whole story first, in a structured way, and then handed that story to AI with a specific expert lens, the reading would be dramatically more meaningful.</p>
+    <p class="pull teal">Reflection first. Interpretation second.</p>
+  </div>
+</section>
+
+<section>
+  <div class="col">
+    <div class="kicker"><span class="n">03</span> How I made decisions <span class="rule"></span></div>
+    <p>Four principles decided almost everything, including what I removed.</p>
+    <div class="principles">
+      <div class="principle"><span class="pn">P1</span><h3>Understanding before optimization</h3><p>Orient the person first. Don't rush them toward an answer they haven't reached.</p></div>
+      <div class="principle"><span class="pn">P2</span><h3>Reflection is emotional work</h3><p>So build in permission to pause. Long reflection is tiring, and people need somewhere to rest.</p></div>
+      <div class="principle"><span class="pn">P3</span><h3>It should feel like a journal, not software</h3><p>Calm, not clinical. If it reads like a form, the reflection dies.</p></div>
+      <div class="principle"><span class="pn">P4</span><h3>The person is the author</h3><p>They write their story; AI helps them see it. The app never writes it for them. This one turned out to be the spine.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="col">
+    <div class="kicker"><span class="n">04</span> The journey <span class="rule"></span></div>
+    <p>This wasn't a long process. Six weeks ago it was a PDF, just a list of questions. Here is how it changed, and why.</p>
+
+    <figure>
+      <div class="vidwrap">
+        <video controls playsinline preload="metadata" poster="./fys-v1-poster.jpg">
+          <source src="./fys-v1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption><b>An earlier version.</b> The bones were there six weeks in, but it still felt like working down a list of questions more than moving through a story.</figcaption>
+    </figure>
+
+    <div class="beat">
+      <h3>Moved the flow to the left</h3>
+      <p class="why">The section navigation used to sit at the bottom. Moving it to a left-side flow made the whole thing feel <b>more elevated, more like a journal you move through</b> than a page you scroll.</p>
+    </div>
+    <div class="beat">
+      <h3>Rebuilt the Prompt Builder</h3>
+      <p class="why">The handoff to AI read too technical, like a step for engineers. I made it <b>button-like and interactive</b>, so passing your story to a lens feels like part of the experience instead of a coding task.</p>
+    </div>
+    <div class="beat">
+      <h3>Softened the language throughout</h3>
+      <p class="why">Small wording changes across the app, aimed at one feeling: <b>this is a journal, not a piece of software.</b></p>
+    </div>
+    <div class="beat">
+      <h3>Added Carl Jung, and rounded out the lenses</h3>
+      <p class="why">Two friends I showed it to both asked, "can you do Jung?" The lens set instantly felt incomplete without him. <b>When it's obvious to the people using it, it's missing.</b></p>
+    </div>
+
+    <figure>
+      <div class="vidwrap">
+        <video controls playsinline preload="metadata" poster="./fys-v2-poster.jpg">
+          <source src="./fys-v2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption><b>Where it is now.</b> The left-side flow, softened language, and expert lenses you choose for yourself.</figcaption>
+    </figure>
+
+    <p>What it became is a workspace with four parts. It walks you through the questions, hands you the expert lenses to read your story through, helps you build the prompt that hunts for threads across those readings, and gives you one place to keep everything and come back to it. The AI reading itself happens in your own AI right now, through prompts the app builds for you. What the app owns is the writing, the organizing, and the returning.</p>
+  </div>
+</section>
+
+<section>
+  <div class="col">
+    <div class="kicker"><span class="n">05</span> What I chose not to build <span class="rule"></span></div>
+    <p>The removals say more about this product than the features do. Everything I took out, I took out to protect one thing: the person stays the author. Of their words, and of their conclusions.</p>
+    <div class="tradeoffs">
+      <div class="trade">
+        <h3><span class="x">✕</span> AI writing your story for you</h3>
+        <p>It would have been easy to let AI generate the reflections. But your own words are the product. The app helps you write your story and hand it to a lens. It never writes the story for you.</p>
+      </div>
+      <div class="trade">
+        <h3><span class="x">✕</span> A forced identity</h3>
+        <p>I built this first for late-diagnosed ADHD women, then opened it up. Not to sell it to everyone. Some people won't understand themselves as ADHD or autistic, and I don't want the design to jar them into that conclusion before they're ready. So I turned the ADHD focus from an assumption into a choice. If someone wants that lens, it's right there for them to pick up.</p>
+      </div>
+      <div class="trade">
+        <h3><span class="x">✕</span> "After the Story"</h3>
+        <p>I built a collection of a hundred literary characters you could continue your story through. I loved it, and I cut it. Paired with the ADHD framing, it made the experience prescriptive. It told people who they were before they had decided.</p>
+      </div>
+      <div class="trade">
+        <h3><span class="x">✕</span> Accounts, for now</h3>
+        <p>Version 1 stays simple on purpose. The complexity of logins and sync wasn't worth it yet, and it would have slowed down the part that matters.</p>
+      </div>
+    </div>
+    <p class="pull">Author of the writing. Author of the meaning.</p>
+  </div>
+</section>
+
+<section>
+  <div class="col">
+    <div class="kicker"><span class="n">06</span> What I learned <span class="rule"></span></div>
+    <p>The clearest thing wasn't in the interface. It was the reaction. Every person I walked through the questions cried, on every lens, including me, and not once. Every time. I stopped treating that as a fluke and started treating it as the point. Hearing yourself as the hero of your own story, read back through someone else's eyes, is the entire experience.</p>
+    <p>The smaller lesson humbled me. A friend suggested letting people bookmark a question to come back to later. My first reaction was that it was unnecessary, one more thing on every question. I was wrong. It became the small, functional touch that makes the app feel usable and cared-for. I don't always know which little thing will matter to someone using this differently than I do.</p>
+  </div>
+</section>
+
+<section>
+  <div class="col">
+    <div class="kicker"><span class="n">07</span> If I keep building <span class="rule"></span></div>
+    <ul class="next">
+      <li><b>Read it aloud.</b> The most transformative part is hearing your story in a voice that isn't yours, not just reading it. Browser speech synthesis is the feature I'm most impatient for.</li>
+      <li><b>Bring the AI inside.</b> Right now the app builds prompts you run in your own AI. The next version weaves the interpretation in, so the app itself can say "I noticed this" as you go.</li>
+      <li><b>Easier cross-lens comparison.</b> The threads feature works, but it's still copy and paste. I want the app to place readings side by side and surface what runs through all of them on its own.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="col">
+    <p class="line">Find your story when you're ready. Whichever story that is.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="col">
+    <a href="./index.html">← Back to portfolio</a>
+    <a href="https://find-your-story.replit.app/" target="_blank" rel="noopener">Live demo →</a>
+  </div>
+</footer>
+
+</body>
+</html>
