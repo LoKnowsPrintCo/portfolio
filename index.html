@@ -91,6 +91,18 @@
   .about p:last-child{color:var(--ink-soft);font-size:1rem}
   .about .cred{font-family:var(--mono);font-size:13px;color:var(--muted)}
 
+  /* ---------- intro video ---------- */
+  .hello{padding:20px 0 8px}
+  .hello .eyebrow{margin-bottom:16px}
+  .playcard{position:relative;display:block;width:100%;padding-bottom:46%;height:0;overflow:hidden;border:1px solid var(--line);border-radius:6px;background:var(--card);text-decoration:none;transition:border-color .22s ease, box-shadow .22s ease}
+  .playcard:hover{border-color:var(--ink-soft);box-shadow:0 14px 30px -18px rgba(30,43,41,.5)}
+  .playcard .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:24px}
+  .playcard .play{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--teal);display:flex;align-items:center;justify-content:center;transition:background .22s ease}
+  .playcard .play svg{margin-left:3px}
+  .playcard:hover .play{background:rgba(28,94,99,.1)}
+  .playcard .label{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+  .hello .hellonote{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em;margin-top:14px}
+
   /* ---------- work grid ---------- */
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
   .card{
@@ -208,6 +220,17 @@
     </div>
   </div>
 </header>
+
+<section class="hello wrap">
+  <p class="eyebrow">A quick hello · Practicing presence</p>
+  <a class="playcard" href="https://www.loom.com/share/7f960f05e70847b6b01428c0ace281b2" target="_blank" rel="noopener">
+    <span class="inner">
+      <span class="play"><svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true"><path d="M0 0 L20 11 L0 22 Z" fill="#1C5E63"/></svg></span>
+      <span class="label">Watch the intro on Loom</span>
+    </span>
+  </a>
+  <p class="hellonote">A short introduction, recorded for the Uncommon Business team.</p>
+</section>
 
 <section class="about wrap" id="about">
   <div class="sec-head"><span class="num">01</span><h2>About</h2><span class="rule"></span></div>
